@@ -75,4 +75,11 @@ class Paths
      * is used when no value is provided to `Services::renderer()`.
      */
     public string $viewDirectory = __DIR__ . '/../Views';
+
+    public function __construct()
+    {
+        if (getenv('VERCEL') || isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL'])) {
+            $this->writableDirectory = '/tmp/writable';
+        }
+    }
 }
