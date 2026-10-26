@@ -1,0 +1,16 @@
+{
+  "name": "ci4-tailwind-vite",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.2.0"
+  }
+}
+
