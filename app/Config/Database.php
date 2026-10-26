@@ -202,7 +202,10 @@ class Database extends Config
         }
 
         // Dukungan otomatis SSL untuk database cloud (TiDB Cloud, Aiven, dll.)
-        if (getenv('database.default.ssl') === 'true' || env('database.default.ssl') === true) {
+        if (
+            getenv('database.default.ssl') === 'true' || env('database.default.ssl') === true
+            || getenv('database_default_ssl') === 'true' || env('database_default_ssl') === true
+        ) {
             $this->default['encrypt'] = ['ssl_verify' => false];
         }
     }
