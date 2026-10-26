@@ -37,9 +37,6 @@
                     <span class="hidden md:inline-block text-xs text-slate-500 font-medium ml-2.5 pl-2.5 border-l border-slate-300">
                         Balai Teknik Sabo
                     </span>
-                    <span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
-                        Demo
-                    </span>
                 </div>
             </a>
 
