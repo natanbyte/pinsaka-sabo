@@ -205,7 +205,14 @@ class App extends BaseConfig
         parent::__construct();
 
         if (getenv('VERCEL') || isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL'])) {
-            $this->proxyIPs = '*';
+            $this->proxyIPs = [
+                '0.0.0.0/0' => 'X-Forwarded-For',
+            ];
+
+            $vercelUrl = getenv('VERCEL_PROJECT_PRODUCTION_URL') ?: getenv('VERCEL_URL') ?: ($_SERVER['HTTP_HOST'] ?? null);
+            if ($vercelUrl) {
+                $this->baseURL = 'https://' . rtrim($vercelUrl, '/') . '/';
+            }
         }
     }
 }
