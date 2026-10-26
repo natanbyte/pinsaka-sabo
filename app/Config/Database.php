@@ -200,5 +200,10 @@ class Database extends Config
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
         }
+
+        // Dukungan otomatis SSL untuk database cloud (TiDB Cloud, Aiven, dll.)
+        if (getenv('database.default.ssl') === 'true' || env('database.default.ssl') === true) {
+            $this->default['encrypt'] = ['ssl_verify' => false];
+        }
     }
 }

@@ -76,7 +76,7 @@ class LaporanKerusakanModel extends Model
      */
     public function hitungPerKategori(?int $userId = null): array
     {
-        $this->select('COALESCE(kategori_laporan, \'sarpras\') AS kategori, COUNT(*) AS jumlah')->groupBy('kategori');
+        $this->select('kategori_laporan, COUNT(*) AS jumlah')->groupBy('kategori_laporan');
 
         if ($userId !== null) {
             $this->where('user_id', $userId);
@@ -84,7 +84,7 @@ class LaporanKerusakanModel extends Model
 
         $hasil = ['semua' => 0, 'sarpras' => 0, 'kendaraan' => 0];
         foreach ($this->findAll() as $baris) {
-            $kat = $baris['kategori'] ?? 'sarpras';
+            $kat = $baris['kategori_laporan'] ?: 'sarpras';
             if (isset($hasil[$kat])) {
                 $hasil[$kat] = (int) $baris['jumlah'];
             }

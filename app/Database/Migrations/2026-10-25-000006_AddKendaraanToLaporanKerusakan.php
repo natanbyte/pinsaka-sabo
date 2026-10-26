@@ -54,7 +54,9 @@ class AddKendaraanToLaporanKerusakan extends Migration
             ],
         ];
 
-        $this->forge->addColumn('laporan_kerusakan', $fields);
+        foreach ($fields as $name => $def) {
+            $this->forge->addColumn('laporan_kerusakan', [$name => $def]);
+        }
     }
 
     public function down()
